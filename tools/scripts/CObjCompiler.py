@@ -13,7 +13,7 @@ def compile_file(args, dirname, fname, platform):
     print "compile " + join(dirname, fname) + " for %s" %platform
     name = fname[:fname.rfind(".")]
     cmd = normpath(BIN_PATH + "/" + platform + "/gcc.exe ")
-    cmd += "-I%s -c -nostdinc -o%s.obj " %(INCLUDE_PATH, name)
+    cmd += "-I%s -c -nostdinc -O2 -o%s.obj " %(INCLUDE_PATH, name)
     for i in args.I:
         cmd += "-I%s " %i
     if platform in ("x86", "x64"):
@@ -86,7 +86,7 @@ args.I = I
 
 if fname:
     if isfile(join(args.s, fname)):
-        if name.lower().endswith(".c") or name.lower().endswith(".cpp"):
+        if fname.lower().endswith(".c") or fname.lower().endswith(".cpp"):
             for platform in PLATFORMS:
                 compile_file(args, args.s, fname, platform)
 else:
