@@ -68,7 +68,7 @@ if __name__ == "__main__":
     parser.add_option("-f", "--file", dest="file_path",
                       help="path to the file with list processing objs")
     parser.add_option("-t", "--target", dest="target",
-                      help="path to the file with list processing objs")    
+                      help="path to the target directory")    
     (options, args) = parser.parse_args()
 
     try:

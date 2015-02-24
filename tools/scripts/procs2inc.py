@@ -185,6 +185,8 @@ if __name__ == "__main__":
                       help="project name")
     parser.add_option("-f", "--file", dest="file_path",
                       help="path to the processing file")
+    parser.add_option("-t", "--target", dest="target",
+                      help="path to the target directory")    
     (options, args) = parser.parse_args()
 
     try:
@@ -193,7 +195,7 @@ if __name__ == "__main__":
         raise IOError("no such file: %s" %options.file_path)
 
     try:
-        out_file = open("./%s_procs.inc" %options.project_name, "w")
+        out_file = open(options.target + "/%s_procs.inc" %options.project_name, "w")
     except IOError:
         raise IOError("can't create file: %s" %options.file_path)
 
