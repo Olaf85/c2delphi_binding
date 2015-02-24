@@ -67,6 +67,8 @@ if __name__ == "__main__":
                       help="project name")
     parser.add_option("-f", "--file", dest="file_path",
                       help="path to the file with list processing objs")
+    parser.add_option("-t", "--target", dest="target",
+                      help="path to the file with list processing objs")    
     (options, args) = parser.parse_args()
 
     try:
@@ -75,7 +77,7 @@ if __name__ == "__main__":
         raise IOError("no such file: %s" %options.file_path)
 
     try:
-        out_file = open("./%s_objs.inc" %options.project_name, "w")
+        out_file = open(options.target + "/%s_objs.inc" %options.project_name, "w")
     except IOError:
         raise IOError("can't create file: %s" %options.file_path)
 
