@@ -84,5 +84,12 @@ if args.I:
         I.append(i)
 args.I = I
 
-walk(args.s, compile_dir, args)
+if fname:
+    if isfile(join(dirname, name)):
+        if name.lower().endswith(".c") or name.lower().endswith(".cpp"):
+            for platform in PLATFORMS:
+                compile_file(args, args.s, fname, platform)
+else:
+    walk(args.s, compile_dir, args)
+
 
