@@ -85,7 +85,7 @@ if args.I:
 args.I = I
 
 if fname:
-    if isfile(join(dirname, name)):
+    if isfile(join(args.s, name)):
         if name.lower().endswith(".c") or name.lower().endswith(".cpp"):
             for platform in PLATFORMS:
                 compile_file(args, args.s, fname, platform)
